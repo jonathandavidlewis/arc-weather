@@ -1,0 +1,10 @@
+.WeatherReport {
+  border: 2px solid black;
+  border-radius: 5px;
+  display: inline-block; 
+  margin: 5px;
+  padding: 0 6px;
+  width: 200px;
+  height: 220px;
+  vertical-align: top;
+}

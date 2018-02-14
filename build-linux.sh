@@ -1,0 +1,1 @@
+GOARCH=amd64 GOOS=linux go build static-server/main.go

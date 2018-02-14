@@ -1,0 +1,24 @@
+{
+  "name": "weather-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "node --inspect index.js",
+    "dev:brk": "node --inspect-brk index.js",
+    "test": "mocha test"
+  },
+  "author": "Jonathan Lewis",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "zipcodes": "^6.0.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.0"
+  }
+}
