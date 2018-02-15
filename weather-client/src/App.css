@@ -9,3 +9,7 @@
 .App-intro {
   font-size: large;
 }
+
+.block {
+  display: block;
+}

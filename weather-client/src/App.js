@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TitleHeader title="Last weeks Weather Report" />
+        <TitleHeader title="Last Week's Weather Report" />
         <p className="App-intro">
           Not this week, LAST week.
         </p>
@@ -34,7 +34,9 @@ class App extends Component {
         <Search handleKeypress={this.handleKeypress} handleInput={this.handleZipInput} handleSearch={this.handleSearch} />
         {this.renderWarning()}
         {this.renderWeatherList()}
+        <div className="block">
         <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+        </div>
       </div>
     );
   }
@@ -93,9 +95,9 @@ class App extends Component {
 
   renderWarning() {
     if(this.state.validZipcode) {
-      return <span></span>
+      return <div className="block"></div>
     } else {
-      return <span>This is not a valid zipcode</span>
+      return <div className="block">This is not a valid zipcode</div>
     }
   }
 }
