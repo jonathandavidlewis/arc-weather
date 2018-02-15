@@ -49,6 +49,9 @@ app.use('/api', responseCache.returnCached, (req, res) => {
     });
 });
 
+app.use(express.static('public'))
+
+
 app.get('*', responseCache.returnCached, (req, res) => {
   debugger;
   request(`${staticServerAddress}${req.originalUrl}`)
