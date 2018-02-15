@@ -16,7 +16,7 @@ const getFromCache = function(key) {
 }
 
 const weatherServiceProvider = function() { 
-  const url = 'http://localhost:8888/api'
+  const url = '/api'
 
   return function getWeather(query, callback) {
     const today = new Date();
