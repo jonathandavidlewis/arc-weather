@@ -7,23 +7,6 @@ const filterDailyData = function(weatherEntry) {
   return weatherEntry.daily.data[0];
 }
 
-getWeatherByZipcode = function getWeatherByZipcode(req, res) {
-  const { location, dateTime } = req.params
-  const { latitude, longitude, city, state } = parseLocation(location);
-  // request to api server with lat, lon, time
-  getDailyWeather({latitude, longitude, dateTime})
-    .then(data => {
-    const weatherWeek = {};
-    weatherWeek.reports = data.reverse().map(weather => filterDailyData(JSON.parse(weather)));
-    weatherWeek.city = city;
-    weatherWeek.state = state;
-    res.send(weatherWeek)
-  }).catch(err => {
-    console.error(err);
-  })
-  //res.json(require('./weather-data.json'));
-}
-
 const getDailyWeather = function({latitude, longitude, dateTime}) {
   let weekDay = parseInt(dateTime);
   const week = new Array(7).fill(1);
@@ -38,10 +21,22 @@ const getDailyWeather = function({latitude, longitude, dateTime}) {
   return Promise.all(requests)
 }
 
+const getWeatherByZipcode = function(req, res) {
+  const { location, dateTime } = req.params
+  const { latitude, longitude, city, state } = parseLocation(location);
 
+  getDailyWeather({latitude, longitude, dateTime})
+    .then(data => {
+    const weatherWeek = {};
+      weatherWeek.reports = data.reverse().map(weather => filterDailyData(JSON.parse(weather)));
+      weatherWeek.city = city;
+      weatherWeek.state = state;
+      res.send(weatherWeek)
+    }).catch(err => {
+      console.error(err);
+  })
+}
 
 router.get('/:location/:dateTime', getWeatherByZipcode);
-
-
 
 module.exports = { getWeatherByZipcode, router}
