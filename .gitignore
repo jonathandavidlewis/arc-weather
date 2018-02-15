@@ -1,3 +1,5 @@
 .env
 /deploy
 **/node_modules
+/file-server
+/fileserver
